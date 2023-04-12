@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="748cec19-1197-4b18-9c64-59a4e3b87b0d" name="Changes" comment="" />
+    <list default="true" id="748cec19-1197-4b18-9c64-59a4e3b87b0d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/evaluator/Evaluator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/exceptions/ParsingException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/index/IndexGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/index/MyIndexGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/parser/ExpressionParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/parser/Parser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/reader/CsvReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/reader/MyCsvReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/airports.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/index/MyIndexGeneratorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/parser/ExpressionParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/reader/MyCsvReaderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2OBg9wGFH4Dv5bmS7TclTX1fl0a" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -16,12 +49,99 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/MyProjects/autocomplete_airports/src/main/resources&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\MyProjects\autocomplete_airports\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.MyCsvReaderTest.Read_Lines_By_Ids_test">
+    <configuration name="ExpressionParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="autocomplete_airports" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="parser" />
+      <option name="MAIN_CLASS_NAME" value="parser.ExpressionParserTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExpressionParserTest.expression_parsing_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="autocomplete_airports" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="parser" />
+      <option name="MAIN_CLASS_NAME" value="parser.ExpressionParserTest" />
+      <option name="METHOD_NAME" value="expression_parsing_test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyCsvReaderTest.Read_Lines_By_Ids_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="autocomplete_airports" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="reader.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="reader" />
+      <option name="MAIN_CLASS_NAME" value="reader.MyCsvReaderTest" />
+      <option name="METHOD_NAME" value="Read_Lines_By_Ids_test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyIndexGeneratorTest.generate_indexes_for_name_column_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="autocomplete_airports" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="index.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="index" />
+      <option name="MAIN_CLASS_NAME" value="index.MyIndexGeneratorTest" />
+      <option name="METHOD_NAME" value="generate_indexes_for_name_column_test" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea -Xmx7m" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.MyCsvReaderTest.Read_Lines_By_Ids_test" />
+      <item itemvalue="JUnit.ExpressionParserTest" />
+      <item itemvalue="JUnit.ExpressionParserTest.expression_parsing_test" />
+      <item itemvalue="JUnit.MyIndexGeneratorTest.generate_indexes_for_name_column_test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MyCsvReaderTest.Read_Lines_By_Ids_test" />
+        <item itemvalue="JUnit.MyIndexGeneratorTest.generate_indexes_for_name_column_test" />
+        <item itemvalue="JUnit.ExpressionParserTest" />
+        <item itemvalue="JUnit.ExpressionParserTest.expression_parsing_test" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -32,6 +152,9 @@
       <updated>1681039243168</updated>
     </task>
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
