@@ -4,5 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface IndexGenerator {
-    List<Map<String,List<Integer>>> getIndexes();
+    // TODO interface depends on implementation. Need to fix!
+    List<ColumnIndex> getIndexes();
 }
