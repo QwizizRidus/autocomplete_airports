@@ -1,8 +1,10 @@
 package org.example.reader;
 
+import org.example.index.FilePosition;
+
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MyCsvReader implements CsvReader, Closeable {
 
@@ -40,10 +42,19 @@ public class MyCsvReader implements CsvReader, Closeable {
     }
 
     @Override
-    public List<String> getLinesByIds(List<Integer> ids) {
-        return br.lines().filter(
-                str -> ids.contains(Integer.parseInt(str.split("^*,")[0]))
-        ).collect(Collectors.toList());
+    public List<String> getLinesByOffsets(List<FilePosition> filePositions) {
+        List<String> result = new ArrayList<>();
+        try (FileInputStream file = new FileInputStream(currentFilePath)) {
+            for (var position : filePositions) {
+                file.getChannel().position(position.getOffset());
+                    var b = new byte[position.getLength()];
+                    file.read(b);
+                    result.add(new String(b));
+            }
+            return result;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
