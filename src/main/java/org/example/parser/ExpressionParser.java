@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ExpressionParser implements Parser{
-    private final List<String> parsedTokens = new ArrayList<>();
+    private final List<Object> parsedTokens = new ArrayList<>();
 
     @Override
     public void parseExpression(String expression) {
@@ -49,7 +49,7 @@ public class ExpressionParser implements Parser{
     }
 
     @Override
-    public List<String> getResult() {
+    public List<Object> getResult() {
         return parsedTokens;
     }
 
