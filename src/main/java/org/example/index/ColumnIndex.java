@@ -1,13 +1,11 @@
 package org.example.index;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ColumnIndex {
-    private Map<String, List<FilePosition>> indexContainer;
+    private Map<String, Set<FilePosition>> indexContainer;
 
-    public ColumnIndex(Map<String, List<FilePosition>> indexContainer) {
+    public ColumnIndex(Map<String, Set<FilePosition>> indexContainer) {
         this.indexContainer = indexContainer;
     }
 
@@ -15,8 +13,23 @@ public class ColumnIndex {
         indexContainer = new HashMap<>();
     }
 
-    public Map<String, List<FilePosition>> getIndexContainer() {
+    public Map<String, Set<FilePosition>> getIndexContainer() {
         return indexContainer;
+    }
+
+    public Set<String> getAllKeys(){
+        return indexContainer.keySet();
+    }
+
+    public Set<FilePosition> getPositionsByKeys(List<String> keys) {
+        Set<FilePosition> result = new HashSet<>();
+        for (var key : keys) {
+            var value = indexContainer.get(key);
+            if (value == null)
+                throw new NoSuchElementException("No corresponding elements for the key");
+            result.addAll(value);
+        }
+        return result;
     }
 
 }

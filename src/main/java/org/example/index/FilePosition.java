@@ -26,4 +26,18 @@ public class FilePosition {
     public void setLength(int length) {
         this.length = length;
     }
+
+    @Override
+    public String toString() {
+        return "Position {offset: " + offset + ", length: " + length + "}";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof FilePosition){
+            var pos2 = (FilePosition) obj;
+            return offset.equals(pos2.getOffset()) && length == pos2.getLength();
+        }
+        return false;
+    }
 }

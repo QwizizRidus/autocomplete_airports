@@ -1,29 +1,27 @@
 package org.example.index;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class NameIndexProcessor implements IndexProcessor{
 
-    private final Map<String, List<FilePosition>> indexContainer;
+    private final ColumnIndex indexContainer;
 
-    public NameIndexProcessor(Map<String, List<FilePosition>> indexContainer) {
-        this.indexContainer = indexContainer;
+    public NameIndexProcessor() {
+        this.indexContainer = new ColumnIndex();
     }
 
     @Override
-    public void tryToAddIndex(int columnNumber, String str, long offset, int length) {
+    public void tryToAddIndex(int columnNumber, String str, Long offset, int length) {
         if (columnNumber != 1) return;
 
         String firstLetter = str.substring(1, 2);
-        List<FilePosition> positions = indexContainer.get(firstLetter);
-        if (positions == null) {
-            var lst = new ArrayList<FilePosition>();
-            lst.add(new FilePosition(offset, length));
-            indexContainer.put(firstLetter, lst);
-        } else {
-            positions.add(new FilePosition(offset, length));
-        }
+        var innerMap = indexContainer.getIndexContainer();
+        Set<FilePosition> positions = innerMap.computeIfAbsent(firstLetter, k -> new HashSet<>());
+        positions.add(new FilePosition(offset, length));
+    }
+
+    @Override
+    public ColumnIndex getIndex() {
+        return indexContainer;
     }
 }
