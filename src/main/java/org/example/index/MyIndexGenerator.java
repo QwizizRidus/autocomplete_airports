@@ -9,13 +9,10 @@ public class MyIndexGenerator implements IndexGenerator{
     private final CsvReader reader;
     private final List<IndexProcessor> indexProcessors;
 
-
-    public MyIndexGenerator(CsvReader reader) {
+    public MyIndexGenerator(CsvReader reader,
+                            List<IndexProcessor> indexProcessors) {
         this.reader = reader;
-
-        // TODO inflate collection with processors
-        indexProcessors = new ArrayList<>();
-        indexProcessors.add(new NameIndexProcessor());
+        this.indexProcessors = indexProcessors;
     }
 
     @Override
@@ -27,25 +24,34 @@ public class MyIndexGenerator implements IndexGenerator{
         }
 
         List<ColumnIndex> result = new ArrayList<>();
-        indexProcessors.forEach(proc -> result.add(proc.getIndex()));
+        for(var processor:indexProcessors) {
+            if (processor != null) result.add(processor.getIndex());
+            else result.add(null);
+        }
+
         return result;
     }
 
     private void inflateIndexes() throws IOException {
         String line;
-        Long offset = 0L;
+        long offset = 0L;
         while ((line = reader.getNextLine()) != null) {
             StringTokenizer st = new StringTokenizer(line, ",");
             int lineLength = line.getBytes().length;
             int columnNumber = 0;
             while (st.hasMoreTokens()) {
                 String str = st.nextToken();
-                for (var processor: indexProcessors) {
-                    processor.tryToAddIndex(columnNumber, str, offset, lineLength);
+                if(str.charAt(0) == '\"' && str.charAt(str.length()-1) != '\"') {
+                    str += ", " + st.nextToken();
+                }
+                Long offsetObj = offset;
+                for (var processor : indexProcessors) {
+                    if(processor == null) continue;
+                    processor.tryToAddIndex(columnNumber, str, offsetObj, lineLength);
                 }
                 columnNumber++;
             }
-            offset += lineLength+1;
+            offset += lineLength + 1;
         }
     }
 

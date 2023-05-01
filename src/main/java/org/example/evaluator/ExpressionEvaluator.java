@@ -1,7 +1,6 @@
 package org.example.evaluator;
 
-import org.example.index.ColumnIndex;
-import org.example.index.FilePosition;
+import org.example.bucket.ColumnBucket;
 import org.example.operation.BooleanOperation;
 import org.example.operation.ComparisonOperation;
 import org.example.operation.Operation;
@@ -10,17 +9,18 @@ import java.util.List;
 import java.util.Set;
 
 public class ExpressionEvaluator implements Evaluator{
-    private final List<ColumnIndex> indexes;
+
+    private final List<ColumnBucket> columnBuckets;
     private final List<Object> tokenSequence;
 
-    public ExpressionEvaluator(List<ColumnIndex> indexes,
+    public ExpressionEvaluator(List<ColumnBucket> cellValueToLineNumbersByColumn,
                                List<Object> tokenSequence) {
-        this.indexes = indexes;
+        this.columnBuckets = cellValueToLineNumbersByColumn;
         this.tokenSequence = tokenSequence;
     }
 
     @Override
-    public Set<FilePosition> evaluate() {
+    public Set<Integer> evaluate() {
         for (int i = tokenSequence.size() - 1; i >= 0; i--) {
             // assume we have: ..., <, column[0], a, ...
             if (isComparisonOperator(tokenSequence.get(i))) {
@@ -29,7 +29,7 @@ public class ExpressionEvaluator implements Evaluator{
                         (String) tokenSequence.get(i + 2),
                         (String) tokenSequence.get(i + 1),
                         (String) tokenSequence.get(i),
-                        indexes
+                        columnBuckets
                 ));
                 // remove tokens 'a' and 'column[0]' from tokenSequence cuz they are
                 // already encapsulated in operation object

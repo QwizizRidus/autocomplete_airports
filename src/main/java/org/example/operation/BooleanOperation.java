@@ -23,15 +23,14 @@ public class BooleanOperation implements Operation {
 
 
     @Override
-    public Set<FilePosition> evaluate() {
-        Set<FilePosition> result;
+    public Set<Integer> evaluate() {
+        Set<Integer> result;
+        result = leftOperand.evaluate();
         if (operator.equals("||")) {
-            result = leftOperand.evaluate();
             result.addAll(rightOperand.evaluate());
             return result;
         }
         if (operator.equals("&")) {
-            result = leftOperand.evaluate();
             result.retainAll(rightOperand.evaluate());
             return result;
         }

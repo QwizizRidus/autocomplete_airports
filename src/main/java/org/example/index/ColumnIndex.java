@@ -3,7 +3,7 @@ package org.example.index;
 import java.util.*;
 
 public class ColumnIndex {
-    private Map<String, Set<FilePosition>> indexContainer;
+    private final Map<String, Set<FilePosition>> indexContainer;
 
     public ColumnIndex(Map<String, Set<FilePosition>> indexContainer) {
         this.indexContainer = indexContainer;
@@ -17,19 +17,10 @@ public class ColumnIndex {
         return indexContainer;
     }
 
-    public Set<String> getAllKeys(){
-        return indexContainer.keySet();
+    public Set<FilePosition> getPositionsByCellValue(String value){
+        return indexContainer.get(value.substring(0,1));
     }
 
-    public Set<FilePosition> getPositionsByKeys(List<String> keys) {
-        Set<FilePosition> result = new HashSet<>();
-        for (var key : keys) {
-            var value = indexContainer.get(key);
-            if (value == null)
-                throw new NoSuchElementException("No corresponding elements for the key");
-            result.addAll(value);
-        }
-        return result;
-    }
+
 
 }

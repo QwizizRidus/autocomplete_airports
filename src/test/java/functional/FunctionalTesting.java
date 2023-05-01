@@ -1,4 +1,4 @@
-package org.example;
+package functional;
 
 import org.example.bucket.ColumnBucketBuilder;
 import org.example.evaluator.Evaluator;
@@ -8,17 +8,24 @@ import org.example.parser.ExpressionParser;
 import org.example.parser.Parser;
 import org.example.reader.CsvReader;
 import org.example.reader.MyCsvReader;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
-        // Entry point
-        var scanner = new Scanner(System.in);
+
+public class FunctionalTesting {
+
+    static CsvReader reader;
+    static List<ColumnIndex> indexes;
+
+    @BeforeAll
+    static void init(){
         // creating reader based on .csv file
-        CsvReader reader = new MyCsvReader(
+        reader = new MyCsvReader(
                 "C:\\MyProjects\\autocomplete_airports\\src\\main\\resources\\airports.csv");
         // create list of processors for index creation
         List<IndexProcessor> processors = new ArrayList<>() {{
@@ -26,12 +33,25 @@ public class Main {
         }};
         // create index generator and create indexes
         IndexGenerator indexGenerator = new MyIndexGenerator(reader, processors);
-        List<ColumnIndex> indexes = indexGenerator.getIndexes();
+        indexes = indexGenerator.getIndexes();
+    }
 
-        // ask user for filter
-        System.out.println("Please, enter the filter:");
-        var filter = scanner.nextLine();
 
+    @ParameterizedTest
+    @CsvSource({
+            ", Bower, 1",
+            ", Bo, 68",
+            ", Al, 98",
+            "column[6]>10&column[7]<45, Al, 54",
+            "column[6]>10||column[7]<45, Al, 91",
+            "column[7]<45&column[10]=\"A\", A, 86",
+            "column[8]>50&column[8]<500, A, 145",
+            "column[6]>10||column[7]<45&column[10]=\"A\", A , 312",
+            "(column[6]>10||column[7]<45)&column[10]=\"A\", A , 87",
+    })
+    void test(String filter, String airportName, String expectedRecordsCountString){
+        if(filter == null) filter = "";
+        int expectedRecordsCount = Integer.parseInt(expectedRecordsCountString);
         List<Object> tokenSequence = null; // contains tokenized filter sequence
         if (!filter.isEmpty()) {
             // parse filter to token sequence
@@ -39,12 +59,6 @@ public class Main {
             parser.parseExpression(filter);
             tokenSequence = parser.getResult();
         }
-
-        // ask user for request
-        System.out.println("Please, enter the airport name:");
-        var airportName = scanner.nextLine();
-        var start = System.nanoTime();
-        long end;
 
         // get table block based on airport name index
         var tableBlock = indexes.get(0).getPositionsByCellValue(airportName);
@@ -58,13 +72,7 @@ public class Main {
                 .filterIndexedLinesByUserInput(lines, airportName);
         // if the filter is empty the resulting lines have already been received
         if (filter.isEmpty()) {
-            end = (System.nanoTime() - start)/1_000_000;
-            System.out.println("Results: ");
-            for (var line : filteredLines) {
-                System.out.println(line);
-            }
-            System.out.println(end + " ms");
-            System.out.println("Entries: " + filteredLines.size());
+            Assertions.assertEquals(expectedRecordsCount, filteredLines.size());
             return;
         }
 
@@ -75,13 +83,7 @@ public class Main {
         // create evaluator and resolve search
         Evaluator evaluator = new ExpressionEvaluator(columnBuckets, tokenSequence);
         var resultingLines = evaluator.evaluate();
-        // print search results
-        end = (System.nanoTime() - start)/1_000_000;
-        System.out.println("Results: ");
-        for (var lineNumber : resultingLines) {
-            System.out.println(lines.get(lineNumber));
-        }
-        System.out.println("Entries: " + resultingLines.size());
-        System.out.println(end + " ms");
+
+        Assertions.assertEquals(expectedRecordsCount, resultingLines.size());
     }
 }

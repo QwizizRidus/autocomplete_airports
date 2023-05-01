@@ -4,25 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="748cec19-1197-4b18-9c64-59a4e3b87b0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/evaluator/Evaluator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/exceptions/ParsingException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/index/IndexGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/index/MyIndexGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/parser/ExpressionParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/parser/Parser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/reader/CsvReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/reader/MyCsvReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/airports.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/index/MyIndexGeneratorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/parser/ExpressionParserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/reader/MyCsvReaderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="748cec19-1197-4b18-9c64-59a4e3b87b0d" name="Changes" comment="Indexes for now store file positions as Sets instead of Lists. It helps to operate with index ranges during expression evaluation. Also, Parser interface changes are belong to previous commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/bucket/ColumnBucket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/bucket/ColumnBucketBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/index/SimilarQueriesIndexProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/functional/FunctionalTesting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/evaluator/Evaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/evaluator/Evaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/evaluator/ExpressionEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/evaluator/ExpressionEvaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/index/ColumnIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/index/ColumnIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/index/IndexGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/index/IndexGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/index/MyIndexGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/index/MyIndexGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/operation/BooleanOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/operation/BooleanOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/operation/Comparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/operation/Comparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/operation/ComparisonOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/operation/ComparisonOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/operation/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/operation/Operation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/reader/CsvReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/reader/CsvReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/reader/MyCsvReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/reader/MyCsvReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/index/MyIndexGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/index/MyIndexGeneratorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/operation/ComparisonOperationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/operation/ComparisonOperationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/reader/MyCsvReaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/reader/MyCsvReaderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,39 +64,64 @@
       <recent name="C:\MyProjects\autocomplete_airports\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MyCsvReaderTest.Read_Lines_By_Ids_test">
-    <configuration name="ExpressionParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.FunctionalTesting.test">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="autocomplete_airports" />
+      <option name="VM_PARAMETERS" value="-Xmx7m" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="parser.*" />
+          <option name="PATTERN" value="org.example.bucket.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="parser" />
-      <option name="MAIN_CLASS_NAME" value="parser.ExpressionParserTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in autocomplete_airports" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="autocomplete_airports" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComparisonOperationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="autocomplete_airports" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="operation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="operation" />
+      <option name="MAIN_CLASS_NAME" value="operation.ComparisonOperationTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExpressionParserTest.expression_parsing_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FunctionalTesting.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="autocomplete_airports" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="parser.*" />
+          <option name="PATTERN" value="functional.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="parser" />
-      <option name="MAIN_CLASS_NAME" value="parser.ExpressionParserTest" />
-      <option name="METHOD_NAME" value="expression_parsing_test" />
+      <option name="PACKAGE_NAME" value="functional" />
+      <option name="MAIN_CLASS_NAME" value="functional.FunctionalTesting" />
+      <option name="METHOD_NAME" value="test(java.lang.String,java.lang.String,java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyCsvReaderTest.Read_Lines_By_Ids_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MyCsvReaderTest.read_lines_by_position_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="autocomplete_airports" />
       <extension name="coverage">
         <pattern>
@@ -104,41 +131,26 @@
       </extension>
       <option name="PACKAGE_NAME" value="reader" />
       <option name="MAIN_CLASS_NAME" value="reader.MyCsvReaderTest" />
-      <option name="METHOD_NAME" value="Read_Lines_By_Ids_test" />
+      <option name="METHOD_NAME" value="read_lines_by_position_test" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MyIndexGeneratorTest.generate_indexes_for_name_column_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="autocomplete_airports" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="index.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="index" />
-      <option name="MAIN_CLASS_NAME" value="index.MyIndexGeneratorTest" />
-      <option name="METHOD_NAME" value="generate_indexes_for_name_column_test" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea -Xmx7m" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.MyCsvReaderTest.Read_Lines_By_Ids_test" />
-      <item itemvalue="JUnit.ExpressionParserTest" />
-      <item itemvalue="JUnit.ExpressionParserTest.expression_parsing_test" />
-      <item itemvalue="JUnit.MyIndexGeneratorTest.generate_indexes_for_name_column_test" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.FunctionalTesting.test" />
+      <item itemvalue="JUnit.All in autocomplete_airports" />
+      <item itemvalue="JUnit.ComparisonOperationTest" />
+      <item itemvalue="JUnit.MyCsvReaderTest.read_lines_by_position_test" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MyCsvReaderTest.Read_Lines_By_Ids_test" />
-        <item itemvalue="JUnit.MyIndexGeneratorTest.generate_indexes_for_name_column_test" />
-        <item itemvalue="JUnit.ExpressionParserTest" />
-        <item itemvalue="JUnit.ExpressionParserTest.expression_parsing_test" />
+        <item itemvalue="JUnit.FunctionalTesting.test" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in autocomplete_airports" />
+        <item itemvalue="JUnit.MyCsvReaderTest.read_lines_by_position_test" />
+        <item itemvalue="JUnit.ComparisonOperationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -151,6 +163,63 @@
       <option name="presentableId" value="Default" />
       <updated>1681039243168</updated>
     </task>
+    <task id="LOCAL-00001" summary="Partial implementation. For now, I have ExpressionParser that will parse filter expressions and MVP-like MyCsvReader and index generation for hardcoded .csv file. Also, I wrote a few tests to review base functionality">
+      <created>1681335168821</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681335168821</updated>
+    </task>
+    <task id="LOCAL-00002" summary="IndexProcessor interface and it's first implementation are added. IndexProcessors used to process table cells and inflate index map with corresponding values">
+      <created>1681413424898</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681413424898</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Index storing is reworked. For now indexes encapsulated in ColumnIndex class that contains corresponding indexContainer.&#10;&#10;Storing table line key as file position was a stupid idea. It's impossible to navigate to specified line without reading the whole file. Line byte offset is used as a file position for now. Offset + line length are encapsulated in FilePosition class.">
+      <created>1681413888680</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681413888680</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Index generation procedure was changed according to new IndexProcessor mechanism. MyIndexGenerator creates list of processors that will be fed with corresponding table cells to inflate their inner indexContainers.">
+      <created>1681414091285</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681414091285</updated>
+    </task>
+    <task id="LOCAL-00005" summary="MyCsvReader upgraded with ability to read specific lines of table without full file reading. The same test case became nine times faster">
+      <created>1681414349568</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681414349568</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Operation entities are implemented. Operations used to represent filter expression operations. Such as ComparisonOperation(&gt;,&lt;,&lt;&gt;,=) and BooleanOperation(||,&amp;). ComparisonOperation uses Comparator to compare strings and numbers from the data-source .csv file">
+      <created>1681755465424</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681755465424</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Evaluator is implemented. Evaluator subclasses are used to evaluate parsed by ExpressionParser expressions. Evaluator operates with token sequence. It folds tokens to Operation step by step according to expression execution order. Then Evaluator calls for the last Operation's evaluate() methods to get result of the whole expression. The last operation calls evaluate() method on both operands (left and right) and so on, until the whole expression evaluated. To fit this paradigm ExpressionParser for now returns token sequence as List&lt;Object&gt; instead of List&lt;String&gt;">
+      <created>1681755879616</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681755879616</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Indexes for now store file positions as Sets instead of Lists. It helps to operate with index ranges during expression evaluation. Also, Parser interface changes are belong to previous commit">
+      <created>1681756106468</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1681756106468</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -166,5 +235,38 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Partial implementation. For now, I have ExpressionParser that will parse filter expressions and MVP-like MyCsvReader and index generation for hardcoded .csv file. Also, I wrote a few tests to review base functionality" />
+    <MESSAGE value="IndexProcessor interface and it's first implementation are added. IndexProcessors used to process table cells and inflate index map with corresponding values" />
+    <MESSAGE value="Index storing is reworked. For now indexes encapsulated in ColumnIndex class that contains corresponding indexContainer.&#10;&#10;Storing table line key as file position was a stupid idea. It's impossible to navigate to specified line without reading the whole file. Line byte offset is used as a file position for now. Offset + line length are encapsulated in FilePosition class." />
+    <MESSAGE value="Index generation procedure was changed according to new IndexProcessor mechanism. MyIndexGenerator creates list of processors that will be fed with corresponding table cells to inflate their inner indexContainers." />
+    <MESSAGE value="MyCsvReader upgraded with ability to read specific lines of table without full file reading. The same test case became nine times faster" />
+    <MESSAGE value="Operation entities are implemented. Operations used to represent filter expression operations. Such as ComparisonOperation(&gt;,&lt;,&lt;&gt;,=) and BooleanOperation(||,&amp;). ComparisonOperation uses Comparator to compare strings and numbers from the data-source .csv file" />
+    <MESSAGE value="Evaluator is implemented. Evaluator subclasses are used to evaluate parsed by ExpressionParser expressions. Evaluator operates with token sequence. It folds tokens to Operation step by step according to expression execution order. Then Evaluator calls for the last Operation's evaluate() methods to get result of the whole expression. The last operation calls evaluate() method on both operands (left and right) and so on, until the whole expression evaluated. To fit this paradigm ExpressionParser for now returns token sequence as List&lt;Object&gt; instead of List&lt;String&gt;" />
+    <MESSAGE value="Indexes for now store file positions as Sets instead of Lists. It helps to operate with index ranges during expression evaluation." />
+    <MESSAGE value="Indexes for now store file positions as Sets instead of Lists. It helps to operate with index ranges during expression evaluation. Also, Parser interface changes are belong to previous commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Indexes for now store file positions as Sets instead of Lists. It helps to operate with index ranges during expression evaluation. Also, Parser interface changes are belong to previous commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/index/MyIndexGeneratorTest.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/operation/Comparator.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/functional/FunctionalTesting.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

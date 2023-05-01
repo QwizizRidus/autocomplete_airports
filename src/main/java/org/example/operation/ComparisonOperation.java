@@ -1,10 +1,8 @@
 package org.example.operation;
 
-import org.example.index.ColumnIndex;
-import org.example.index.FilePosition;
+import org.example.bucket.ColumnBucket;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -12,24 +10,24 @@ public class ComparisonOperation implements Operation{
     private final String leftOperand;
     private final String rightOperand;
     private final String operator;
-    private final List<ColumnIndex> indexes;
+    private final List<ColumnBucket> columnBuckets; // cell value to line number mapping
 
     public ComparisonOperation(String leftOperand,
                                String rightOperand,
                                String operator,
-                               List<ColumnIndex> indexes) {
+                               List<ColumnBucket> columnBuckets) {
         if(leftOperand == null || rightOperand == null || operator == null)
             throw new IllegalArgumentException("It's not possible to create a half-built operation. " +
                     "Some of constructor arguments are null");
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;
         this.operator = operator;
-        this.indexes = indexes;
+        this.columnBuckets = columnBuckets;
     }
 
 
     @Override
-    public Set<FilePosition> evaluate() {
+    public Set<Integer> evaluate() {
         List<String> filteredKeys;
         Predicate<String> filter;
         int columnNumber;
@@ -74,14 +72,23 @@ public class ComparisonOperation implements Operation{
 
             }
         }
-        Set<String> keys = indexes.get(columnNumber).getAllKeys();
-        filteredKeys = keys.stream().filter(filter).collect(Collectors.toList());
-        return indexes.get(columnNumber).getPositionsByKeys(filteredKeys);
+        var correspondingBucket = columnBuckets.get(columnNumber);
+        filteredKeys = correspondingBucket.getAllKeys()
+                .stream().filter(filter).collect(Collectors.toList());
+
+        var result = new HashSet<Integer>();
+        for(var key: filteredKeys){
+            result.addAll(correspondingBucket.getValue(key));
+        }
+
+        return result;
     }
 
 
     private int getColumnNumber(String columnOperand){
-        return  Integer.parseInt(columnOperand.substring (7,8));
+        return columnOperand.length() == 10?
+                Integer.parseInt(columnOperand.substring (7,9)):// column[10]
+                Integer.parseInt(columnOperand.substring (7,8));// column[1]
     }
 
     private boolean isColumnOperand(String operand){

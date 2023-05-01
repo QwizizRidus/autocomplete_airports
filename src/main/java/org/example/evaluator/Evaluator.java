@@ -6,6 +6,6 @@ import java.util.Set;
 
 public interface Evaluator {
 
-    public Set<FilePosition> evaluate();
+    public Set<Integer> evaluate();
 
 }

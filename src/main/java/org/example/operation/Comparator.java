@@ -41,7 +41,7 @@ public class Comparator {
     }
 
     private static boolean isNumber(String str){
-        return !(str.startsWith("\"") && str.endsWith("\""));
+        return !(str.startsWith("\"") && str.endsWith("\"") || str.equals("\\N"));
     }
 
 }

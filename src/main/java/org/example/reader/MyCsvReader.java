@@ -3,13 +3,12 @@ package org.example.reader;
 import org.example.index.FilePosition;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class MyCsvReader implements CsvReader, Closeable {
 
     private BufferedReader br;
-    private String currentFilePath;
+    private final String currentFilePath;
 
     public MyCsvReader(String path) {
         currentFilePath = path;
@@ -42,7 +41,7 @@ public class MyCsvReader implements CsvReader, Closeable {
     }
 
     @Override
-    public List<String> getLinesByOffsets(List<FilePosition> filePositions) {
+    public List<String> getLinesByOffsets(Set<FilePosition> filePositions) {
         List<String> result = new ArrayList<>();
         try (FileInputStream file = new FileInputStream(currentFilePath)) {
             for (var position : filePositions) {
